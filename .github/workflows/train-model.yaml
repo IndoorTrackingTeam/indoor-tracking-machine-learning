@@ -14,6 +14,7 @@ on:
 
 jobs:
   run-python-script:
+    name: Train Model
     runs-on: ubuntu-latest
 
     steps:
@@ -31,4 +32,10 @@ jobs:
 
     - name: Run Python script
       run: |
-        python training/model_training_service.py 
+        python training/model_training_service.py > training/logs.txt
+
+    - name: Upload to artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: training-logs
+        path: training/logs.txt
