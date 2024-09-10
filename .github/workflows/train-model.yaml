@@ -79,9 +79,9 @@ jobs:
       run: |
         python training/model_training_service.py   
 
-#    - name: Move model to API
-#      run: |
-#        mv $MODEL_PATH api/$MODEL_PATH
+    - name: Move model to API
+      run: |
+        mv AutogluonModels api/AutogluonModels
 
     - name: Print current directory
       run: pwd
