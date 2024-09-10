@@ -39,10 +39,5 @@ jobs:
         echo "MODEL is $MODEL"
         echo "PATH is $PATH"
 
-    - name: Display .env file content
-      run: |
-        cat AutogluonModels/ag-20240910_132415
-
     - name: List files in the current directory
-      run: |
-        ls -la
+      run: ls -la
