@@ -38,3 +38,5 @@ jobs:
       run: |
         echo "MODEL is $MODEL"
         echo "PATH is $PATH"
+        CAT AutogluonModels/ag-20240910_132415
+

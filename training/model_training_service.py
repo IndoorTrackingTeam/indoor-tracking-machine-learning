@@ -33,8 +33,7 @@ best_model, model_path = create_predictor(train_df, test_df)
 
 model_path_parts = model_path.split(':')[-1]
 model_name = best_model
-relative_path = model_path_parts
 
 with open(os.getenv('GITHUB_ENV'), 'a') as env_file:
     env_file.write(f"MODEL={model_name}\n")
-    env_file.write(f"PATH={relative_path}\n")
+    env_file.write(f"PATH={model_path_parts}\n")
