@@ -39,5 +39,8 @@ jobs:
         echo "MODEL is $MODEL"
         echo "PATH is $PATH"
 
-    - name: List files in the current directory
-      run: ls -la
+    - name: Upload to artifact
+      uses: actions/upload-artifact@v3
+      with:
+        name: model
+        path: $PATH
