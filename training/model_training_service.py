@@ -22,7 +22,7 @@ def create_predictor(train_data, test_data):
 
     predictor.evaluate(test_data, silent=True)
 
-    best_model = predictor.get_model_best()
+    best_model = predictor.model_best()
 
     model_path = predictor.path
 
@@ -31,11 +31,7 @@ def create_predictor(train_data, test_data):
 train_df, test_df = get_data_for_training()
 best_model, model_path = create_predictor(train_df, test_df)
 
-model_name = best_model
-model_path_parts = model_path.split(':')[-1]
-print(model_path)
-print(model_path_parts)
 
 with open(os.getenv('GITHUB_ENV'), 'a') as env_file:
-    env_file.write(f"MODEL={model_name}\n")
-    env_file.write(f"PATH={model_path_parts}\n")
+    env_file.write(f"MODEL={best_model}\n")
+    env_file.write(f"MODEL_PATH={model_path}\n")
