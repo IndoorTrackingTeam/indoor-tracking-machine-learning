@@ -31,8 +31,10 @@ def create_predictor(train_data, test_data):
 train_df, test_df = get_data_for_training()
 best_model, model_path = create_predictor(train_df, test_df)
 
-model_path_parts = model_path.split(':')[-1]
 model_name = best_model
+model_path_parts = model_path.split(':')[-1]
+print(model_path)
+print(model_path_parts)
 
 with open(os.getenv('GITHUB_ENV'), 'a') as env_file:
     env_file.write(f"MODEL={model_name}\n")
