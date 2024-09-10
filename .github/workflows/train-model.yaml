@@ -57,23 +57,23 @@ jobs:
 #        gcloud auth configure-docker \
 #        us-east1-docker.pkg.dev
 
-#    - name: Set up Python
-#      uses: actions/setup-python@v4
-#      with:
-#        python-version: '3.9'
-#
-#    - name: Install dependencies
-#      run: |
-#        python -m pip install --upgrade pip
-#        pip install -r api/requirements.txt
-#
-#    - name: Run Python script
-#      run: |
-#        python training/model_training_service.py   
-#
-#    - name: Move model to API
-#      run: |
-#        mv $MODEL_PATH api/$MODEL_PATH
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install -r api/requirements.txt
+
+    - name: Run Python script
+      run: |
+        python training/model_training_service.py   
+
+    - name: Move model to API
+      run: |
+        mv $MODEL_PATH api/$MODEL_PATH
 
     - name: Print current directory
       run: pwd
