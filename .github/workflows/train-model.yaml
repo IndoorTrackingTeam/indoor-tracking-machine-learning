@@ -65,14 +65,14 @@ jobs:
       uses: actions/cache@v3
       with:
         path: ~/.cache/pip
-        key: ${{ runner.os }}-pip-${{ hashFiles('api/requirements.txt') }}
+        key: ${{ runner.os }}-pip-${{ hashFiles('training/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
           
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install --no-cache-dir -r api/requirements.txt
+        pip install --no-cache-dir -r training/requirements.txt
 
     - name: Run Python script
       run: |
@@ -81,13 +81,6 @@ jobs:
     - name: Move model to API
       run: |
         mv AutogluonModels api/AutogluonModels
-
-    - name: Print current directory
-      run: pwd
-
-    - name: List files in model directory
-      run: |
-        ls -R 
 
     - name: Build
       run: |-
