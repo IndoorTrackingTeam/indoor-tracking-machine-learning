@@ -37,5 +37,4 @@ jobs:
     - name: Use the variables
       run: |
         echo "MODEL is $MODEL"
-        FINAL_PATH=$(echo "$PATH" | awk -F: '{print $NF}')
-        MODEL_NAME=$(basename "$FINAL_PATH")
+        echo "PATH is $PATH"
