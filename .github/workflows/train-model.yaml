@@ -36,12 +36,4 @@ jobs:
 
     - name: Use the variables
       run: |
-        echo "MODEL=$MODEL">> $GITHUB_ENV
-        echo "MODEL_PATH=$PATH" >> $GITHUB_ENV
-        echo "$MODEL_PATH"
-
-    - name: Upload to artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: model
-        path: $MODEL_PATH
+        echo "$PATH"
