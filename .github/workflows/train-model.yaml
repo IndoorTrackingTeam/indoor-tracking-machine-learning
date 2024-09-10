@@ -36,4 +36,5 @@ jobs:
 
     - name: Use the variables
       run: |
-        echo "$PATH"
+        echo "Modelo: $MODEL"
+        echo "Caminho: $MODEL_PATH"
