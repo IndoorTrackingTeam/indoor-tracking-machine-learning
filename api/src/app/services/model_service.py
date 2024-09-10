@@ -16,15 +16,11 @@ def get_last_data(esp_id):
     return df
 
 def get_current_room_with_model(data):
-    MODEL_PATH = os.getenv('PATH')
     MODEL = os.getenv('MODEL')
+    MODEL_PATH = os.getenv('MODEL_PATH')
     
-    # Carregar o preditor salvo
     predictor = TabularPredictor.load(MODEL_PATH)
     
-    # Fazer predições nos novos dados usando o modelo escolhido
     predictions = predictor.predict(data, model=MODEL)
 
-    # Exibir as predições
-    # print(f"resultado final: {predictions[0]}")
     return predictions[0]
