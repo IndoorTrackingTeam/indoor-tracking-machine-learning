@@ -1,6 +1,7 @@
+import os
+import requests
 import pandas as pd
 from autogluon.tabular import TabularDataset, TabularPredictor
-import requests
 
 def get_data_for_training():
     url = 'https://run-api-dev-131050301176.us-east1.run.app/router/training-data/get-data-for-training'
@@ -29,3 +30,7 @@ def create_predictor(train_data, test_data):
 
 train_df, test_df = get_data_for_training()
 best_model, model_path = create_predictor(train_df, test_df)
+
+with open(os.getenv('GITHUB_ENV'), 'a') as env_file:
+    env_file.write(f"MODEL={best_model}\n")
+    env_file.write(f"PATH={model_path}\n")

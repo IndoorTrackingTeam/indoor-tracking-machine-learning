@@ -32,10 +32,9 @@ jobs:
 
     - name: Run Python script
       run: |
-        python training/model_training_service.py > training/logs.txt
+        python training/model_training_service.py
 
-    - name: Upload to artifact
-      uses: actions/upload-artifact@v3
-      with:
-        name: training-logs
-        path: training/logs.txt
+    - name: Use the variables
+      run: |
+        echo "MODEL is $MODEL"
+        echo "PATH is $PATH"
