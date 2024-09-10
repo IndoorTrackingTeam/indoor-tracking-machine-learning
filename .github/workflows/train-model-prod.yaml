@@ -1,4 +1,4 @@
-name: Train Model
+name: Train Model PROD
 
 on:
   workflow_dispatch:
@@ -27,7 +27,7 @@ jobs:
   setup-build-publish:
     name: Setup, Build, Publish, and Deploy
     runs-on: ubuntu-latest
-    environment: development
+    environment: production
 
     steps:
     - name: Checkout repository
@@ -85,17 +85,17 @@ jobs:
     - name: Build
       run: |-
         docker build \
-          --tag "us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-dev:latest" \
+          --tag "us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-prod:latest" \
           ./api
 
     - name: Publish
       run: |-
-        docker push "us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-dev:latest"
+        docker push "us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-prod:latest"
 
     - name: Deploy
       run: |
-        gcloud run deploy run-${{ env.IMAGE }}-dev \
-        --image us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-dev:latest \
+        gcloud run deploy run-${{ env.IMAGE }}-prod \
+        --image us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-prod:latest \
         --platform managed \
         --allow-unauthenticated \
         --cpu=$CPU \
