@@ -3,3 +3,4 @@ uvicorn==0.22.0
 pydantic==1.10.11
 autogluon==1.1.1
 pandas==2.1.1
+numpy==1.21.0
