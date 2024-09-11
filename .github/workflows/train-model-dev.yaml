@@ -17,7 +17,7 @@ env:
   PORT: 8000
   REGION: us-east1
   CPU: 2
-  MEMORY: 512Mi
+  MEMORY: 4Gi
   TIMEOUT: 300
   CONCURRENCY: 80
   MAX_INSTANCES: 5
@@ -80,7 +80,7 @@ jobs:
 
     - name: Move model to API
       run: |
-        mv AutogluonModels api/src/AutogluonModels
+        mv AutogluonModels api/AutogluonModels
 
     - name: Build
       run: |-

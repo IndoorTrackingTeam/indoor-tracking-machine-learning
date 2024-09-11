@@ -9,8 +9,6 @@ def get_last_data(esp_id):
 
     data = response.json()
 
-    print(data[0])
-
     df = pd.DataFrame.from_dict(data)
 
     return df
