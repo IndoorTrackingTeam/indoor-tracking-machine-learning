@@ -9,8 +9,6 @@ def get_last_data(esp_id):
 
     data = response.json()
 
-    print(data[0])
-
     df = pd.DataFrame.from_dict(data)
 
     return df
@@ -18,8 +16,6 @@ def get_last_data(esp_id):
 def get_current_room_with_model(data):
     MODEL = os.getenv('MODEL')
     MODEL_PATH = os.getenv('MODEL_PATH')
-    
-    print(os.listdir())
     
     predictor = TabularPredictor.load(MODEL_PATH)
     
