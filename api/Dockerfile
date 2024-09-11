@@ -2,8 +2,6 @@ FROM us-east1-docker.pkg.dev/seventh-azimuth-433221-r8/ar-backend/machine-learni
 
 RUN rm -rf /app && mkdir -p /app
 WORKDIR /app
-
-COPY ./src /app/src
-COPY main.py .
+COPY . /app
 
 CMD ["python", "main.py"]
