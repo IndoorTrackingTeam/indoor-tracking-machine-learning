@@ -1,2 +1,2 @@
-autogluon
-pandas
+autogluon==0.0.15
+pandas==1.1.5

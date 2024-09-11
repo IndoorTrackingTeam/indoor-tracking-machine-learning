@@ -19,8 +19,6 @@ def get_current_room_with_model(data):
     MODEL = os.getenv('MODEL')
     MODEL_PATH = os.getenv('MODEL_PATH')
     
-    print(MODEL)
-    print(MODEL_PATH)
     print(os.listdir())
     
     predictor = TabularPredictor.load(MODEL_PATH)

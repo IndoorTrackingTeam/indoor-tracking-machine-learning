@@ -80,7 +80,7 @@ jobs:
 
     - name: Move model to API
       run: |
-        mv AutogluonModels api/src/AutogluonModels
+        mv AutogluonModels api/AutogluonModels
 
     - name: Build
       run: |-
