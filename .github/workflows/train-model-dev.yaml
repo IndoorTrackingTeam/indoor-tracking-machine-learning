@@ -79,7 +79,7 @@ jobs:
         python -m pip install --upgrade pip
         pip install --upgrade setuptools wheel
         pip install torch==2.3.1 torchvision==0.18.1 --index-url https://download.pytorch.org/whl/cpu
-        pip install -r training/requirements.txt
+        pip install --use-pep517 -r training/requirements.txt
 
     - name: Run Python script
       run: |
