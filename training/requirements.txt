@@ -1,8 +1,8 @@
-protobuf>=3.19.0
-setuptools>=65.5.0
-wheel>=0.41.0
-torch==2.3.1
-torchvision==0.18.1
+protobuf>=5.28.2
+setuptools>=75.2.0
+wheel>=0.44.0
+torch==2.5.0
+torchvision==0.20.0
 autogluon==1.1.1
 pandas==2.1.1
 numpy>=1.22.4
