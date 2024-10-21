@@ -3,6 +3,10 @@ import requests
 import pandas as pd
 import os
 
+from dotenv import load_dotenv
+
+load_dotenv()
+
 def get_last_data(esp_id):
     url = f'https://run-api-dev-131050301176.us-east1.run.app/router/data/get-last-data-from-esp-id?esp_id={esp_id}'
     response = requests.get(url)
