@@ -59,7 +59,7 @@ jobs:
           
     - name: Build Docker image
       run: |
-        docker build -t python_training .
+        docker build -t training/python_training .
 
     - name: Run Docker container
       run: |
