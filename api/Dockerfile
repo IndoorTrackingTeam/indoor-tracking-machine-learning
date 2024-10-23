@@ -2,6 +2,8 @@ FROM python:3.9-alpine
 
 WORKDIR /app
 
+RUN apk add --no-cache build-base
+
 COPY ./src /app/src
 COPY main.py .
 COPY requirements.txt .
