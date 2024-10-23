@@ -71,8 +71,8 @@ jobs:
         -v ${{ github.workspace }}/api/AutogluonModels:/app/AutogluonModels
 
     - name: List files in api
-        run: |
-          ls -la api/
+      run: |
+        ls -la api/
 
     - name: Build
       run: |-
