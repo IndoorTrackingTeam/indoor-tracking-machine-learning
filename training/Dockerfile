@@ -1,5 +1,8 @@
 FROM python:3.9-slim
 
+ARG GITHUB_ENV
+ENV GITHUB_ENV
+
 RUN apt-get update && apt-get install -y \
     build-essential \
     libopenblas-dev \

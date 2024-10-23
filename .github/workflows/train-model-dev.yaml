@@ -59,7 +59,8 @@ jobs:
           
     - name: Build Docker image
       run: |
-        docker build -t python_training training/.
+        docker build --build-arg GITHUB_ENV=${{ secrets.GITHUB_ENV }} \
+          -t python_training training/.
 
     - name: Run Docker container
       run: |
