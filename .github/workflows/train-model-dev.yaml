@@ -11,7 +11,6 @@ on:
   push:
     branches:
       - development
-      - fix-deploy
 
 env:
   IMAGE: machine-learning-api
@@ -57,23 +56,35 @@ jobs:
         gcloud auth configure-docker \
         us-east1-docker.pkg.dev
 
-    - name: Creating model file location
-      run: |
-        mkdir api/AutogluonModels
+    - name: Set up Python
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.9'
+
+    - name: Cache Python packages
+      uses: actions/cache@v3
+      with:
+        path: ~/.cache/pip
+        key: ${{ runner.os }}-pip-${{ hashFiles('training/requirements.txt') }}
+        restore-keys: |
+          ${{ runner.os }}-pip-
           
-    - name: Build Docker image
+    - name: Install dependencies
       run: |
-        docker build --build-arg ARG_GITHUB_ENV=${{ secrets.GITHUB_ENV }} \
-          -t python_training training/.
-
-    - name: Run Docker container
+        python -m pip install --upgrade pip
+        pip install --no-cache-dir -r training/requirements.txt
+          
+    - name: Install dependencies
       run: |
-        docker run -v ${{ github.workspace }}/api/AutogluonModels:/app/AutogluonModels python_training
+        pip install -r training/requirements.txt
 
-
-    - name: Clean up Docker
+    - name: Run Python script
       run: |
-        docker system prune -f
+        python training/model_training_service.py   
+
+    - name: Move model to API
+      run: |
+        mv AutogluonModels api/AutogluonModels
 
     - name: Build
       run: |-

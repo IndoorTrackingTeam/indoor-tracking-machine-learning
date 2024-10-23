@@ -1,7 +1,11 @@
-FROM us-east1-docker.pkg.dev/seventh-azimuth-433221-r8/ar-backend/machine-learning-api-dev:latest
+FROM python:3.9
 
-RUN rm -rf /app && mkdir -p /app
 WORKDIR /app
-COPY . /app
+
+COPY ./src /app/src
+COPY main.py .
+COPY requirements.txt .
+
+RUN pip install -r "requirements.txt"
 
 CMD ["python", "main.py"]
