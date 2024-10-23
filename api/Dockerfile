@@ -11,4 +11,12 @@ COPY requirements.txt .
 RUN pip install --upgrade pip
 RUN pip install -r "requirements.txt"
 
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libopenblas-dev \
+    libatlas-base-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN pip install --no-cache-dir thinc==8.2.5 autogluon
+
 CMD ["python", "main.py"]
