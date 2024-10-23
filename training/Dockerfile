@@ -2,9 +2,10 @@ FROM python:3.9-slim
 
 WORKDIR /app
 
-COPY requirements.txt .
-COPY model_training_service.py .
+RUN pip install uv
+RUN uv pip install autogluon
+RUN pip install --no-cache-dir  pandas numpy
 
-RUN pip install --no-cache-dir -r requirements.txt
+COPY model_training_service.py .
 
 CMD ["python", "model_training_service.py"]
