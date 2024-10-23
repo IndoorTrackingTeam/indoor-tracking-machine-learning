@@ -70,10 +70,6 @@ jobs:
       run: |
         docker run -v ${{ github.workspace }}/api/AutogluonModels:/app/AutogluonModels python_training
 
-    - name: List files in api
-      run: |
-        ls -la api/
-
     - name: Build
       run: |-
         docker build \
