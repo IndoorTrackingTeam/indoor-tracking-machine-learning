@@ -56,6 +56,10 @@ jobs:
       run: |-
         gcloud auth configure-docker \
         us-east1-docker.pkg.dev
+
+    - name: Creating model file location
+      run: |
+        mkdir api/AutogluonModels
           
     - name: Build Docker image
       run: |
@@ -64,11 +68,11 @@ jobs:
 
     - name: Run Docker container
       run: |
-        docker run python_training
+        -v ${{ github.workspace }}/api/AutogluonModels:/app/AutogluonModels
 
-    - name: Move model to API
-      run: |
-        mv AutogluonModels api/AutogluonModels
+    - name: List files in api
+        run: |
+          ls -la api/
 
     - name: Build
       run: |-
