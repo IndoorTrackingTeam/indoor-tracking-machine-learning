@@ -2,11 +2,11 @@ FROM python:3.9-alpine
 
 WORKDIR /app
 
-RUN apt-get update && apt-get install -y \
-    build-essential \
-    libopenblas-dev \
-    libatlas-base-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apk update && apk add --no-cache \
+    build-base \
+    openblas-dev \
+    linux-headers \
+    bash
 
 COPY ./src /app/src
 COPY main.py .
