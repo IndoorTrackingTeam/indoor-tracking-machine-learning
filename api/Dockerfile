@@ -2,6 +2,8 @@ FROM python:3.9-alpine
 
 WORKDIR /app
 
+RUN pip install --no-cache-dir thinc==8.2.5 autogluon
+
 RUN apk update && apk add --no-cache \
     build-base \
     openblas-dev \
@@ -15,6 +17,5 @@ COPY requirements.txt .
 RUN pip install --upgrade pip --no-cache-dir
 RUN pip install -r "requirements.txt" --no-cache-dir
 
-RUN pip install --no-cache-dir thinc==8.2.5 autogluon
 
 CMD ["python", "main.py"]
