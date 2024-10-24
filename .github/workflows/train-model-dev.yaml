@@ -77,7 +77,13 @@ jobs:
 
     - name: Run Python script
       run: |
-        python training/model_training_service.py   
+        python training/model_training_service.py
+
+    - name: Clean up after install
+      run: |
+        sudo apt-get clean
+        sudo rm -rf /var/lib/apt/lists/*
+        sudo rm -rf ~/.cache/pip
 
     - name: Move model to API
       run: |
