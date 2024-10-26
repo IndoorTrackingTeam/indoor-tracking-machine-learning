@@ -1,8 +1,7 @@
-FROM python:3.9-alpine
+FROM python:3.11-alpine
 
 WORKDIR /app
 
-RUN pip install  --no-cache-dir setuptools wheel
 RUN pip install --no-cache-dir thinc==8.2.5 autogluon
 
 RUN apk update && apk add --no-cache \
