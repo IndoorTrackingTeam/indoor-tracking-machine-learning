@@ -3,3 +3,5 @@ uvicorn
 pydantic
 pandas
 numpy
+thinc==8.2.5
+autogluon
