@@ -88,7 +88,7 @@ jobs:
     - name: Move model to API
       run: |
         mv AutogluonModels api/AutogluonModels
-        cd api
+        cd api/AutogluonModels
         ls -la
 
     - name: Build
