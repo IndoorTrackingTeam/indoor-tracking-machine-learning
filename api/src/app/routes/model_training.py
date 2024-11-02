@@ -21,8 +21,8 @@ def get_esp_position(esp_id):
 
         room_counts = Counter(list_result)
         
-        # print(list_result)
-        # print(room_counts.most_common(2))
+        print(list_result)
+        print(room_counts.most_common(2))
         
         room_most_common = room_counts.most_common(2)
         
