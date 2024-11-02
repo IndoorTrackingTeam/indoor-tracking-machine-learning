@@ -1,4 +1,5 @@
-from autogluon.tabular import TabularDataset, TabularPredictor
+# from autogluon.tabular import TabularDataset, TabularPredictor
+from datetime import datetime, timedelta
 import requests
 import pandas as pd
 import os
@@ -13,9 +14,27 @@ def get_last_data(esp_id):
 
     data = response.json()
 
-    df = pd.DataFrame.from_dict(data)
+    first_key = next(iter(data))  # Obter a primeira chave
+    print("Primeira chave:", first_key)
+    data_aux = datetime.strptime(first_key, "%Y-%m-%d %H:%M:%S")
+    max_interval = timedelta(minutes=2)
 
-    return df
+    dfs = {}
+    for date, item in data.items():
+        print("Data recebida:", date)
+
+        if data_aux - (datetime.strptime(date, "%Y-%m-%d %H:%M:%S")) < max_interval:
+            print("dentro do time: ", item)
+            df = pd.DataFrame.from_dict(item)
+            
+            dfs[date] = df
+        else:
+            print("para a lista")
+            break
+
+    print(dfs)
+
+    return dfs
 
 def get_current_room_with_model(data):
     MODEL = os.getenv('MODEL')
