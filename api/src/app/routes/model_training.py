@@ -33,8 +33,9 @@ def get_esp_position(esp_id):
             elif room_most_common[0][1] > room_most_common[1][1]:
                 room = room_most_common[0][0]
                 num_try = 5
-        else:
-            num_try += 1
+        elif len(room_most_common) == 1:
+            room = room_most_common[0][0]
+            num_try = 5
 
     print(f"return room: {room} - num_try: {num_try}")
     return room
