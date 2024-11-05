@@ -4,7 +4,7 @@ import pandas as pd
 from autogluon.tabular import TabularDataset, TabularPredictor
 
 def get_data_for_training():
-    url = 'https://run-api-dev-131050301176.us-east1.run.app/router/training-data/get-data-for-training'
+    url = 'https://run-api-prod-131050301176.us-east1.run.app/router/training-data/get-data-for-training'
     response = requests.get(url)
 
     data = response.json()
