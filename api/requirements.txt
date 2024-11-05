@@ -1,6 +1,9 @@
-fastapi==0.109.1
-uvicorn==0.22.0
-pydantic==1.10.13
-autogluon==1.1.1
+fastapi
+uvicorn
+pydantic
+setuptools 
+wheel
 pandas==2.1.1
-numpy==1.22.0
+numpy>=1.22.4
+thinc==8.2.5
+autogluon
