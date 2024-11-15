@@ -14,7 +14,7 @@ api.add_middleware(
     allow_credentials=True
 )
 
-api.include_router(model_training.router, prefix="/model-training", tags=["user"])
+api.include_router(model_training.router, prefix="/model-training", tags=["model-training"])
 
 if __name__ == "__main__":
     uvicorn.run("main:api", host="0.0.0.0", port=8000, reload=True)
