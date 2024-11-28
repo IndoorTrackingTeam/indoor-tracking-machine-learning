@@ -22,7 +22,7 @@ def create_predictor(train_data, test_data):
 
     predictor.evaluate(test_data, silent=True)
 
-    best_model = predictor.model_best()
+    best_model = predictor.get_model_best()
 
     model_path = predictor.path
 
