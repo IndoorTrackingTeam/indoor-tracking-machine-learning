@@ -4,7 +4,7 @@ import pandas as pd
 from autogluon.tabular import TabularDataset, TabularPredictor
 
 def get_data_for_training():
-    url = 'https://run-api-prod-131050301176.us-east1.run.app/router/training-data/get-data-for-training'
+    url = 'https://run-api-prod-694723526996.us-east1.run.app/router/training-data/get-data-for-training'
     response = requests.get(url)
 
     data = response.json()
@@ -22,7 +22,7 @@ def create_predictor(train_data, test_data):
 
     predictor.evaluate(test_data, silent=True)
 
-    best_model = predictor.get_model_best()
+    best_model = predictor.model_best
 
     model_path = predictor.path
 

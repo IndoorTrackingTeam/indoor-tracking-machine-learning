@@ -9,7 +9,7 @@ import os
 # load_dotenv()
 
 def get_last_data(esp_id):
-    url = f'https://run-api-prod-131050301176.us-east1.run.app/router/data/get-last-data-from-esp-id?esp_id={esp_id}'
+    url = f'https://run-api-prod-694723526996.us-east1.run.app/router/data/get-last-data-from-esp-id?esp_id={esp_id}'
     response = requests.get(url)
 
     data = response.json()
