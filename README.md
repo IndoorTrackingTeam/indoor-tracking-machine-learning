@@ -11,6 +11,8 @@
   </a>
 </p>
 
+## Descrição
+
 Este repositório envolve a criação e o gerenciamento de um modelo de Machine Learning que é acionado via API para realizar o treinamento e fazer previsões com base nos dados armazenados no MongoDB. O modelo é implantado no Cloud Run da Google Cloud Platform (GCP) e a implementação é automatizada usando GitHub Actions.
 
 Caso queria acessar a documentação geral do projeto [**clique aqui.**](https://indoortrackingteam.github.io/indoor-tracking-docs/docs/intro)
