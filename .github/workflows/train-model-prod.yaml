@@ -93,10 +93,12 @@ jobs:
       with:
         python-version: '3.11'
 
-    - name: Cache Python packages
+    - name: Cache Python dependencies
       uses: actions/cache@v3
       with:
-        path: ~/.cache/pip
+        path: |
+          ~/.cache/pip
+          ~/.local/lib/python${{ matrix.python-version }}/site-packages
         key: ${{ runner.os }}-pip-${{ hashFiles('training/requirements.txt') }}
         restore-keys: |
           ${{ runner.os }}-pip-
@@ -114,6 +116,7 @@ jobs:
       run: |
         ls -la
         cd AutogluonModels
+        cd ag-20241205_033505
         ls -la
 
     - name: Move model to API
