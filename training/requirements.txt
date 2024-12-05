@@ -2,4 +2,4 @@ pandas==2.1.1
 numpy>=1.22.4
 requests
 thinc==8.2.5
-autogluon
+autogluon==1.1.1
