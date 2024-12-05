@@ -6,6 +6,6 @@ wheel
 pandas==2.1.1
 numpy>=1.22.4
 thinc==8.2.5
-autogluon==1.1.1
+autogluon==1.2
 pytest-cov
 httpx
