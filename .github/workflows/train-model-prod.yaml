@@ -104,18 +104,9 @@ jobs:
         run: |
           mv AutogluonModels api/AutogluonModels
 
-      - name: Cache Docker layers
-        uses: actions/cache@v3
-        with:
-          path: /tmp/.buildx-cache
-          key: ${{ runner.os }}-docker-${{ github.sha }}
-          restore-keys: ${{ runner.os }}-docker-
-
       - name: Build
         run: |-
           docker build \
-            --cache-from=type=local,src=/tmp/.buildx-cache \
-            --cache-to=type=local,dest=/tmp/.buildx-cache \
             --tag "us-east1-docker.pkg.dev/${{ secrets.GCP_PROJECT }}/ar-backend/${{ env.IMAGE }}-prod:latest" \
             ./api
 
