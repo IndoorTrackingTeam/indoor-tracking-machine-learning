@@ -11,6 +11,7 @@ on:
   push:
     branches:
       - main
+      - fix-model
 
 env:
   IMAGE: machine-learning-api
@@ -108,6 +109,12 @@ jobs:
     - name: Run Python script
       run: |
         python training/model_training_service.py   
+
+    - name: Move model to API
+      run: |
+        ls -la
+        cd AutogluonModels
+        ls -la
 
     - name: Move model to API
       run: |
