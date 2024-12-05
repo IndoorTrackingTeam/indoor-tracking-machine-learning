@@ -162,4 +162,6 @@ jobs:
         --timeout=$TIMEOUT \
         --concurrency=$CONCURRENCY \
         --min-instances=$MIN_INSTANCES \
-        --max-instances=$MAX_INSTANCES
+        --max-instances=$MAX_INSTANCES \
+        --set-env-vars=MODEL=$MODEL \
+        --set-env-vars=MODEL_PATH=$MODEL_PATH
