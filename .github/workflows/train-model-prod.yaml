@@ -106,7 +106,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install -r training/requirements.txt
+        pip install -r training/requirements.txt --use-feature=fast-deps
 
     - name: Run Python script
       run: |
