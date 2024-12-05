@@ -1,4 +1,6 @@
-FROM python:3.11-alpine
+FROM python:3.11-slim
+
+WORKDIR /app
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
     build-essential \
@@ -13,7 +15,8 @@ RUN rm -rf /app && mkdir -p /app
 WORKDIR /app
 COPY . /app
 
-RUN pip install --upgrade pip --no-cache-dir --disable-pip-version-check
-RUN pip install -r "requirements.txt" --no-cache-dir --disable-pip-version-check
+RUN pip install --upgrade pip --no-cache-dir
+RUN pip install -r "requirements.txt" --no-cache-dir
+
 
 CMD ["python", "main.py"]
