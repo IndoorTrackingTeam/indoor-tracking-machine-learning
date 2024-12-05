@@ -60,6 +60,9 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     environment: production
+    outputs:
+      model: ${{ env.MODEL }}
+      model_path: ${{ env.MODEL_PATH }}
 
     steps:
     - name: Checkout repository
@@ -104,6 +107,16 @@ jobs:
       with:
         name: autogluonmodels
         path: api/AutogluonModels/
+
+    - name: Export MODEL and MODEL_PATH
+      id: export-vars
+      run: |
+        echo "model=${MODEL}" >> $GITHUB_ENV
+        echo "model_path=${MODEL_PATH}" >> $GITHUB_ENV
+      shell: bash
+      env:
+        MODEL: ${{ env.MODEL }}
+        MODEL_PATH: ${{ env.MODEL_PATH }}
 
   build-and-deploy:
     name: Build and Deploy
@@ -163,5 +176,5 @@ jobs:
         --concurrency=$CONCURRENCY \
         --min-instances=$MIN_INSTANCES \
         --max-instances=$MAX_INSTANCES \
-        --set-env-vars=MODEL=$MODEL \
-        --set-env-vars=MODEL_PATH=$MODEL_PATH
+        --set-env-vars=MODEL=${{ needs.setup-and-script.outputs.model }} \
+        --set-env-vars=MODEL_PATH=${{ needs.setup-and-script.outputs.model_path }}
