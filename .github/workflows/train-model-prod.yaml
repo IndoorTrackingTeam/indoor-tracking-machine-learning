@@ -94,15 +94,16 @@ jobs:
       run: |
         python training/model_training_service.py
 
-    - name: Move model to API
+    - name: Move AutogluonModels to API folder
       run: |
-        mv AutogluonModels api/AutogluonModels
+        mkdir -p api/AutogluonModels
+        mv AutogluonModels/* api/AutogluonModels/
 
-    - name: Upload API folder with model
+    - name: Upload AutogluonModels
       uses: actions/upload-artifact@v3
       with:
-        name: api-with-model
-        path: api/
+        name: autogluonmodels
+        path: api/AutogluonModels/
 
   build-and-deploy:
     name: Build and Deploy
@@ -132,10 +133,11 @@ jobs:
     - name: Configure Docker for Artifact Registry
       run: gcloud auth configure-docker us-east1-docker.pkg.dev
 
-    - name: Download API folder with model
+    - name: Download AutogluonModels
       uses: actions/download-artifact@v3
       with:
-        name: api-with-model
+        name: autogluonmodels
+        path: api/AutogluonModels/
 
     - name: Build Docker image
       run: |-
